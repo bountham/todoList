@@ -158,6 +158,49 @@
                 //Assert
                 $this->assertEquals([$test_task, $test_task2], $result);
             }
+
+
+                    function testUpdate()
+            {
+                //Arrange
+                $name = "Work stuff";
+                $id = 1;
+                $test_category = new Category($name, $id);
+                $test_category->save();
+
+                $new_name = "Home stuff";
+
+                //Act
+                $test_category->update($new_name);
+
+                //Assert
+                $this->assertEquals("Home stuff", $test_category->getName());
+            }
+
+            function testDelete()
+            {
+                //Arrange
+                $name = "Work stuff";
+                $id = 1;
+                $test_category = new Category($name, $id);
+                $test_category->save();
+
+                $name2 = "Home stuff";
+                $id2 = 2;
+                $test_category2 = new Category($name2,$id2);
+                $test_category2->save();
+
+                //Act
+                $test_category->delete();
+
+                //Assert
+                $this->assertEquals([$test_category2], Category::getAll());
+
+            }
+
+            
+
+
     }
 
 ?>
