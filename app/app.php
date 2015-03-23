@@ -15,19 +15,19 @@
         return $app['twig']->render('index.twig');
     });
 
-    $app->post("/tasks", function() use ($app) {
+    $app->get("/tasks", function() use ($app) {
         return $app['twig']->render('tasks.twig', array('tasks' => Task::getAll()));
     });
 
 
-    $app->get("/catergories", function() use ($app) {
+    $app->get("/categories", function() use ($app) {
         return $app['twig']->render('categories.twig', array('categories' => Category::getAll()));
-    })
+    });
 
-    $app->post("/tasks", function() user ($app) {
+    $app->post("/tasks", function() use ($app) {
         $task = new Task($_POST['description']);
         $task->save();
-        $return $app['twig']->render('tasks.twig', array('tasks' => Task::getAll()));
+        return $app['twig']->render('tasks.twig', array('tasks' => Task::getAll()));
     });
 
     $app->post("/delete_tasks", function() use ($app) {
@@ -41,7 +41,7 @@
          return $app ['twig']->render('categories.twig', array('categories' => Category::getAll()));
     });
 
-    $app->post("/delete_categories", fucntion() user ($app){
+    $app->post("/delete_categories", function() use ($app) {
         Category::deleteAll();
         return $app['twig']->render('index.twig');
     });
