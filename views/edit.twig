@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <title>Edit task</title>
+    </head>
+    <body>
+        <h1>Edit {{ task.getDescription }} :</h1>
+
+        <form action="/edit_task" method="post">
+            <label for="description">Enter a new description :</label>
+            <input name="description" id="description" type="text">
+            <input type="hidden" name="_method" value="patch">
+            <input type="hidden" name="task_id" id="task_id" value="{{ task.getId }}">
+            <button type="submit">Edit</button>
+
+        </form>
+    </body>
+</html>

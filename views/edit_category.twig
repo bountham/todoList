@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <title>Edit category</title>
+    </head>
+    <body>
+        <h1>Edit {{ category.getName }} :</h1>
+
+        <form action="/edit_category" method="post">
+            <label for="name">Enter a new name </label>
+            <input name="name" type="text">
+            <input type="hidden" name="_method" value="patch">
+            <input type="hidden" name="category_id" id="category_id" value="{{ category.getId }}">
+            <button type="submit">Edit</button>
+
+        </form>
+    </body>
+</html>

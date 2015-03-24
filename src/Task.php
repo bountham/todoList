@@ -30,13 +30,12 @@
             $this->id = (int) $new_id;
         }
 
-        
+
 
         function addCategory($category)
         {
             $GLOBALS['DB']->exec("INSERT INTO categories_tasks (category_id, task_id) VALUES ({$category->getId()}, {$this->getId()});");
         }
-
         function getCategories()
         {
             $query = $GLOBALS['DB']->query("SELECT category_id FROM categories_tasks WHERE task_id = {$this->getId()};");
